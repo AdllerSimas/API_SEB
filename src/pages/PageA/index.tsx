@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Header, Title, EnergyProviders, Form, Error } from './styles';
 
 import logoImg  from '../../assets/logo.svg';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import {  FiChevronRight } from 'react-icons/fi';
 
 import api from '../../services/api';   
 
@@ -41,8 +41,7 @@ const PageA: React.FC = () => {
     api.get(`api/energy-providers`).then(response => {
         //console.log(response.data);
         setEnergyProviders(response.data);
-        console.log('foi');
-        console.log(energyProviders);
+        
 
     }).catch((err) => {console.log(err)})
         
@@ -60,14 +59,16 @@ const PageA: React.FC = () => {
     }
 
     const filterProvider = energyProviders.filter(function(provider) {
-        if (provider.name.toLowerCase() == searchProviders.toLowerCase())
+        if (provider.name.toLowerCase() === searchProviders.toLowerCase())
             return provider;
+        else
+            return null;
     });
 
     console.log(filterProvider);
     setFilteredProviders(filterProvider);
 
-    if (filterProvider.length == 0) {
+    if (filterProvider.length === 0) {
         setInputError('Digite corretamente o nome da empresa!');
         return;
     }

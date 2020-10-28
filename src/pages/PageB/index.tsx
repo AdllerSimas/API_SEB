@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import { Header, Title, SubTitle, Button, Table } from './styles';
 
 import logoImg  from '../../assets/logo.svg';
-import { FiChevronLeft } from 'react-icons/fi';
+//import { FiChevronLeft } from 'react-icons/fi';
 import { } from './styles';
 import api from '../../services/api';
-import { math } from 'polished';
+//import { math } from 'polished';
 
-import { parseISO, isAfter } from 'date-fns';
+//import { parseISO, isAfter } from 'date-fns';
 
 
 
@@ -39,15 +39,15 @@ interface ListData {
 
 const PageB: React.FC = () => {
 
-    const [tariffFlags, setTariffFlags] = useState()
+    //const [tariffFlags, setTariffFlags] = useState()
     const [showTable, setShowTable] = useState(false);
     const [dataPLD, setDataPLD] = useState<Pld[]>([]);
 
-    const [valuesPLD, setValuesPld] = useState<ValuesPld[]>([]);
-    const [dateTimePLD, setDateTimePld] = useState<DateTimePLD[]>([]);
+    //const [valuesPLD, setValuesPld] = useState<ValuesPld[]>([]);
+    //const [dateTimePLD, setDateTimePld] = useState<DateTimePLD[]>([]);
     
 
-    const [listData, setListData] = useState<ListData[]>([]);
+    //const [listData, setListData] = useState<ListData[]>([]);
 
     useEffect(() => {
 
@@ -81,11 +81,11 @@ const PageB: React.FC = () => {
         //         console.log(response.data);
         //     }).catch((err) => {console.log(err)})
         
-        // api.get(`api/pld`)
-        //     .then(response => {
-        //         console.log(`https://apidosetoreletrico.com.br/api/pld`);  
-        //         console.log(response.data);
-        //     }).catch((err) => {console.log(err)})
+        api.get(`api/pld`)
+            .then(response => {
+                console.log(`https://apidosetoreletrico.com.br/api/pld`);  
+                console.log(response.data);
+            }).catch((err) => {console.log(err)})
       
     }, []);
 
@@ -97,10 +97,14 @@ const PageB: React.FC = () => {
             .then(response => {
                 console.log(response.data);
                 setDataPLD(response.data.items);
+                console.log('ok');
                 // setDataPldValues(response.data.items.values);
                 // renderDataPLD();  
                 renderDataPLD(); 
-            }).catch((err) => {console.log(err)})       
+            }).catch((err) => {
+                console.log(err);
+                console.log('err');
+            })       
     }
 
     

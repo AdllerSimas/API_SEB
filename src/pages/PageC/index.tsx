@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 //import api from '../../services/api';
 
 import Header from '../../components/Header';
 
 
-import { } from './styles';
+// import { } from './styles';
 
 
 const PageC: React.FC = () => {
